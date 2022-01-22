@@ -1,0 +1,12 @@
+version: "3.5"
+
+services:
+  roborock-controller-api:
+    build: .
+    container_name: roborock-controller-api
+    environment:
+      - DEVICE_ADDRESS=${DEVICE_ADDRESS}
+      - DEVICE_TOKEN=${DEVICE_TOKEN}
+      - BIN_TARGET=${BIN_TARGET}
+    ports:
+      - 127.0.0.1:3000:3000
