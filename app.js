@@ -51,7 +51,7 @@ module.exports = async function (fastify, opts) {
   });
 
   // Schedule a job to run every day at 7am (go to bin)
-  schedule.scheduleJob("* * * * *", async () => {
+  schedule.scheduleJob("0 7 * * *", async () => {
     await fastify.roborockController().goToTarget(binTarget.x, binTarget.y);
   });
 };
