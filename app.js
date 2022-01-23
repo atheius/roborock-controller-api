@@ -4,6 +4,7 @@ const path = require("path");
 const AutoLoad = require("fastify-autoload");
 const Env = require("fastify-env");
 const S = require("fluent-json-schema");
+const schedule = require("node-schedule");
 
 module.exports = async function (fastify, opts) {
   // Get environment config
@@ -47,5 +48,10 @@ module.exports = async function (fastify, opts) {
     dir: path.join(__dirname, "routes"),
     options: Object.assign({ binTarget }, opts),
     autoHooks: true,
+  });
+
+  // Schedule a job to run every day at 7am (go to bin)
+  schedule.scheduleJob("* * * * *", async () => {
+    await fastify.roborockController().goToTarget(binTarget.x, binTarget.y);
   });
 };
