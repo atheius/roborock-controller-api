@@ -14,7 +14,6 @@ class Controller {
   async connect() {
     this.logger.info("Connecting to Roborock device...");
     this.device = await miio.device({
-      cacheTime: 60,
       address: this.deviceAddress,
       token: this.deviceToken,
     });

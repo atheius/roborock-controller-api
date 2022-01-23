@@ -23,7 +23,8 @@
     "fastify-plugin": "^3.0.0",
     "fastify-sensible": "^3.1.2",
     "fluent-json-schema": "^3.0.1",
-    "miio": "github:atheius/miio"
+    "miio": "github:atheius/miio",
+    "node-schedule": "^2.1.0"
   },
   "devDependencies": {
     "prettier": "^2.5.1",
