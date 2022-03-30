@@ -5,6 +5,6 @@ services:
     build: .
     container_name: roborock-controller-api
     env_file:
-        - .env
+      - .env
     ports:
       - 127.0.0.1:3000:3000

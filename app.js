@@ -45,6 +45,13 @@ module.exports = async function (fastify, opts) {
     ),
   });
 
+  // Disable logging of healthcheck route
+  fastify.addHook("onRoute", (opts) => {
+    if (opts.path === "/healthcheck") {
+      opts.logLevel = "silent";
+    }
+  });
+
   // This loads all plugins defined in routes
   // define your routes in one of these
   fastify.register(AutoLoad, {
