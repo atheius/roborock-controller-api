@@ -1,14 +1,14 @@
 "use strict";
 
 const path = require("path");
-const AutoLoad = require("fastify-autoload");
-const Env = require("fastify-env");
+const AutoLoad = require("@fastify/autoload");
+const Env = require("@fastify/env");
 const S = require("fluent-json-schema");
 const schedule = require("node-schedule");
 const pjson = require("./package.json");
 
 module.exports = async function (fastify, opts) {
-  fastify.log.info(`App version: ${pjson.version}`);
+  fastify.log.info(`🤖 App version: ${pjson.version}`);
 
   // Get environment config
   await fastify.register(Env, {
