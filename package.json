@@ -1,6 +1,6 @@
 {
   "name": "roborock-controller-api",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "This project was bootstrapped with Fastify-CLI.",
   "main": "app.js",
   "directories": {
