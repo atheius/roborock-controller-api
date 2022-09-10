@@ -5,6 +5,21 @@ const fp = require("fastify-plugin");
 const miio = require("miio");
 
 class Controller {
+  /**
+   * IP address of the device
+   */
+  deviceAddress;
+
+  /**
+   * API token for the device
+   */
+  deviceToken;
+
+  /**
+   * Fastify logger
+   */
+  logger;
+
   constructor({ deviceAddress, deviceToken, logger }) {
     this.deviceAddress = deviceAddress;
     this.deviceToken = deviceToken;
@@ -12,24 +27,28 @@ class Controller {
   }
 
   async connect() {
-    this.logger.info("Connecting to Roborock device...");
-    this.device = await miio.device({
-      address: this.deviceAddress,
-      token: this.deviceToken,
-    });
-    this.logger.info("Connected 🚀");
-    return this.device;
+    try {
+      // Create a fresh connection to the device
+      this.logger.info("⌛ Connecting to device");
+      this.device = await miio.device({
+        address: this.deviceAddress,
+        token: this.deviceToken,
+      });
+      this.logger.info("🚀 Connected");
+      return this.device;
+    } catch (err) {
+      this.logger.error("❌ Failed to connect to device");
+      throw err;
+    }
   }
 }
 
 module.exports = fp(async function (fastify, opts) {
-  const device = await new Controller({
-    logger: fastify.log,
-    deviceAddress: opts.deviceAddress,
-    deviceToken: opts.deviceToken,
-  }).connect();
-
   fastify.decorate("roborockController", function () {
-    return device;
+    return new Controller({
+      logger: fastify.log,
+      deviceAddress: opts.deviceAddress,
+      deviceToken: opts.deviceToken,
+    });
   });
 });
