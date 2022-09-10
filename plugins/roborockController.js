@@ -20,6 +20,11 @@ class Controller {
    */
   logger;
 
+  /**
+   * The Roborock device
+   */
+  device;
+
   constructor({ deviceAddress, deviceToken, logger }) {
     this.deviceAddress = deviceAddress;
     this.deviceToken = deviceToken;

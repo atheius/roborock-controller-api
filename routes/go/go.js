@@ -7,7 +7,9 @@ module.exports = async function (fastify, opts) {
       await fastify
         .roborockController()
         .connect()
-        .goToTarget(opts.binTarget.x, opts.binTarget.y);
+        .then((device) =>
+          device.goToTarget(opts.binTarget.x, opts.binTarget.y)
+        );
       return { done: true };
     } catch (err) {
       fastify.log.error(err);
@@ -18,7 +20,10 @@ module.exports = async function (fastify, opts) {
   fastify.get("/dock", async function (request, reply) {
     try {
       fastify.log.info("Going to dock 🔋");
-      await fastify.roborockController().connect().activateCharging();
+      await fastify
+        .roborockController()
+        .connect()
+        .then((device) => device.activateCharging());
       return { done: true };
     } catch (err) {
       fastify.log.error(err);
