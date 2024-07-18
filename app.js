@@ -65,7 +65,7 @@ module.exports = async function (fastify, opts) {
   // Go to the bin location on a schedule
   if (fastify.config.BIN_SCHEDULE_ENABLED) {
     fastify.log.info(
-      `🗑️  Bin schedule enabled: ${fastify.config.BIN_SCHEDULE_CRON}`
+      `🚮 Bin schedule enabled: ${fastify.config.BIN_SCHEDULE_CRON}`
     );
     schedule.scheduleJob(fastify.config.BIN_SCHEDULE_CRON, async () => {
       try {
