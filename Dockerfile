@@ -2,8 +2,7 @@ FROM node:lts-alpine
 
 WORKDIR /app
 
-ENV NODE_ENV production
-ENV SERVICE Template
+ENV NODE_ENV=production
 
 RUN npm install npm@latest -g
 RUN apk add dumb-init
