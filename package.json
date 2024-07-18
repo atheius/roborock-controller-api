@@ -1,6 +1,6 @@
 {
   "name": "roborock-controller-api",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "description": "An API interface for a Roborock vacuum cleaner.",
   "main": "app.js",
   "directories": {
