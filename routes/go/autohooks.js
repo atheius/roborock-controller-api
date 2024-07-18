@@ -1,3 +1,5 @@
 module.exports = async function (fastify, opts) {
-  fastify.addHook("onRequest", fastify.basicAuth);
+  if (fastify.basicAuth) {
+    fastify.addHook("onRequest", fastify.basicAuth);
+  }
 };

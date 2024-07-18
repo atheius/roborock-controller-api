@@ -19,7 +19,9 @@ module.exports = async function (fastify, opts) {
       .prop("AUTH_PASSWORD", S.string().required().default("password"))
       .prop("DEVICE_ADDRESS", S.string().required().default(""))
       .prop("DEVICE_TOKEN", S.string().required().default(""))
+      .prop("BIN_SCHEDULE_ENABLED", S.boolean().default(false))
       .prop("BIN_TARGET", S.string().required().default("0,0"))
+      .prop("BIN_SCHEDULE_CRON", S.string().default("0 7 * * *"))
       .valueOf(),
   });
 
@@ -60,13 +62,18 @@ module.exports = async function (fastify, opts) {
     autoHooks: true,
   });
 
-  // Schedule a job to run every day at 7am (go to bin)
-  schedule.scheduleJob("0 7 * * *", async () => {
-    try {
-      const device = await fastify.roborockController().connect();
-      device.goToTarget(binTarget.x, binTarget.y);
-    } catch (error) {
-      fastify.log.error("❌ Failed to run scheduled command");
-    }
-  });
+  // Go to the bin location on a schedule
+  if (fastify.config.BIN_SCHEDULE_ENABLED) {
+    fastify.log.info(
+      `🗑️  Bin schedule enabled: ${fastify.config.BIN_SCHEDULE_CRON}`
+    );
+    schedule.scheduleJob(fastify.config.BIN_SCHEDULE_CRON, async () => {
+      try {
+        const device = await fastify.roborockController().connect();
+        device.goToTarget(binTarget.x, binTarget.y);
+      } catch (error) {
+        fastify.log.error("❌ Failed to run scheduled command");
+      }
+    });
+  }
 };

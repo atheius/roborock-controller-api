@@ -1,7 +1,7 @@
 {
   "name": "roborock-controller-api",
   "version": "1.4.4",
-  "description": "This project was bootstrapped with Fastify-CLI.",
+  "description": "An API interface for a Roborock vacuum cleaner.",
   "main": "app.js",
   "directories": {
     "test": "test"
@@ -15,19 +15,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fastify/autoload": "^5.4.0",
-    "@fastify/basic-auth": "^4.0.0",
-    "@fastify/env": "^4.1.0",
+    "@fastify/autoload": "^5.10.0",
+    "@fastify/basic-auth": "^5.1.1",
+    "@fastify/env": "^4.4.0",
     "@fastify/sensible": "^5.1.1",
-    "fastify": "^4.5.3",
-    "fastify-cli": "^5.4.1",
-    "fastify-plugin": "^4.2.1",
-    "fluent-json-schema": "^3.1.0",
+    "fastify": "^4.28.1",
+    "fastify-cli": "^6.2.0",
+    "fastify-plugin": "^4.5.1",
+    "fluent-json-schema": "^4.2.1",
     "miio": "github:atheius/miio",
-    "node-schedule": "^2.1.0"
+    "node-schedule": "^2.1.1"
   },
   "devDependencies": {
-    "prettier": "^2.7.1",
-    "tap": "^16.3.0"
+    "prettier": "^3.3.3",
+    "tap": "^21.0.0"
   }
 }

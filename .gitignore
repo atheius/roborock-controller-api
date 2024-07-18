@@ -1,6 +1,9 @@
 # Env
 .env*
 
+# Test
+.tap
+
 # Logs
 logs
 *.log
