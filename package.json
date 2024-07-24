@@ -3,22 +3,24 @@
   "version": "1.5.2",
   "description": "An API interface for a Roborock vacuum cleaner.",
   "main": "app.js",
+  "type": "module",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "tap \"test/**/*.test.js\"",
-    "start": "fastify start -l info -P -T 30000 app.js",
-    "dev": "fastify start -w -l info -P -T 30000 app.js"
+    "test": "node --test --experimental-test-coverage test/**/*.test.js",
+    "lint": "eslint .",
+    "start": "fastify start -l info -P -T 30000 src/app.js",
+    "dev": "fastify start -w -l info -P -T 30000 src/app.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "James Mugliston",
+  "license": "MIT",
   "dependencies": {
     "@fastify/autoload": "^5.10.0",
     "@fastify/basic-auth": "^5.1.1",
     "@fastify/env": "^4.4.0",
-    "@fastify/sensible": "^5.1.1",
+    "@fastify/sensible": "^5.6.0",
     "fastify": "^4.28.1",
     "fastify-cli": "^6.2.0",
     "fastify-plugin": "^4.5.1",
@@ -27,7 +29,9 @@
     "node-schedule": "^2.1.1"
   },
   "devDependencies": {
-    "prettier": "^3.3.3",
-    "tap": "^21.0.0"
+    "@eslint/js": "^9.7.0",
+    "eslint": "^9.7.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3"
   }
 }

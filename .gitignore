@@ -1,6 +1,9 @@
 # Env
 .env*
 
+# VSCode config
+.vscode
+
 # Test
 .tap
 

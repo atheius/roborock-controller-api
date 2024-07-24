@@ -1,9 +1,9 @@
 import { describe, it, beforeEach, afterEach } from 'node:test'
 import { equal, deepEqual } from 'node:assert'
 
-import { build } from '../app.js'
+import { build } from '../../app.js'
 
-describe('/', () => {
+describe('/healthcheck', () => {
   let app
 
   beforeEach(() => {
@@ -16,10 +16,11 @@ describe('/', () => {
 
   it('GET (200)', async () => {
     const response = await app.inject({
-      url: '/',
+      method: 'GET',
+      url: '/healthcheck',
     })
 
     equal(response.statusCode, 200)
-    deepEqual(response.payload, 'Roborock controller API')
+    deepEqual(response.payload, JSON.stringify({ ok: true }))
   })
 })
