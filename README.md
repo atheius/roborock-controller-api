@@ -79,7 +79,7 @@ docker build -t roborock-controller-api .
 
 # Run the container
 docker run \
---env ACCESS_TOKEN="token" \
+--env DEVICE_TOKEN="token" \
 --env DEVICE_ADDRESS="0.0.0.0" \
 -p 3000:3000 \
 roborock-controller-api:latest
