@@ -1,4 +1,18 @@
-# Roborock Controller
+# Roborock Controller API
+
+<div align="center">
+    <img
+      src="https://github.com/atheius/roborock-controller-api/raw/HEAD/logo.jpeg"
+      width="150"
+      height="auto"
+    />
+</div>
+
+<div align="center">
+
+![buiild](https://github.com/atheius/roborock-controller-api/actions/workflows/main.yml/badge.svg) ![docker](https://img.shields.io/docker/v/atheius/roborock-controller-api) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+</div>
 
 An API interface for a Roborock vacuum cleaner.
 
@@ -53,6 +67,22 @@ Run the API:
 
 ```
 npm run dev
+```
+
+## Docker
+
+To build and run the Docker container:
+
+```sh
+# Build the container
+docker build -t roborock-controller-api .
+
+# Run the container
+docker run \
+--env ACCESS_TOKEN="token" \
+--env DEVICE_ADDRESS="0.0.0.0" \
+-p 3000:3000 \
+roborock-controller-api:latest
 ```
 
 ## Examples
