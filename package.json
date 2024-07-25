@@ -24,7 +24,7 @@
     "fastify": "^4.28.1",
     "fastify-cli": "^6.2.0",
     "fastify-plugin": "^4.5.1",
-    "fluent-json-schema": "^4.2.1",
+    "fluent-json-schema": "^5.0.0",
     "miio": "github:atheius/miio",
     "node-schedule": "^2.1.1"
   },
