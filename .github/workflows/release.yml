@@ -36,6 +36,7 @@ jobs:
         run: npm -g install @semantic-release/git semantic-release && semantic-release
   push_to_registry:
     name: Push Docker image to Docker Hub
+    needs: release
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
