@@ -23,6 +23,7 @@ export default {
         npmPublish: false,
       },
     ],
+    '@semantic-release/git',
     '@semantic-release/github',
   ],
 }
