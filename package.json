@@ -29,7 +29,7 @@
     "node-schedule": "^2.1.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.13.0",
+    "@eslint/js": "^9.16.0",
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.3.3",
